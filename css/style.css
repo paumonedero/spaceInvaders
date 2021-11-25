@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    background-color: black;
+}
+body{
+    transform: scale(0.8);
+    overflow: hidden;
+}
+.juego{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -400px;
+    margin-top: 30px;
+}
+
+.grid{
+    width: 690px;
+    height: 690px;
+    border: 30px solid transparent;
+    border-image: url(../img/border.png) 20% round;
+    display: flex;
+    flex-wrap: wrap;
+    background-image: url(../img/fonsJoc.png);
+}
+
+.grid div{
+    box-sizing: border-box;
+    width: 46px;
+    height: 46px;
+}
+
+.alien{
+    background-image: url(../img/alienNormal.png);
+    background-size: cover;
+}
+
+.alienEspecial{
+    background-image: url(../img/alienEspecial.png)!important;
+    background-size: cover;
+}
+
+.nave{
+    background-image: url(../img/nave.png);
+    background-size: cover;
+}
+
+.laser{
+    background-image: url(../img/laser.png);
+    background-size: cover;
+}
+
+.boom{
+    background-image: url(../img/explosion.gif);
+    background-size: cover;
+}
+h1{
+    color: white;
+}

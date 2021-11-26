@@ -50,7 +50,7 @@ document.addEventListener("keydown", function(e){//Es el event listener que acti
 //dibujamos todos los aliens (tanto especiales como normales) por primera vez (antes de dibujar los especiales generamos su posicion).
 dibujarAliens();
 generarPosicionEspeciales();
-dibujarEspeciales();
+//dibujarEspeciales();
 
 //generarPosicionEspeciales --> para guardar la posicion del array en la que estarán los aliens especiales.
 function generarPosicionEspeciales() {
@@ -77,10 +77,7 @@ function dibujarAliens() {
 
 //dibujar los aliens especiales
 function dibujarEspeciales(i){
-    if (i != undefined){
-        quadrados[aliens[posicionEspeciales[i]]].classList.add("alienEspecial");
-    }
-   
+        quadrados[aliens[posicionEspeciales[i]]].classList.add("alienEspecial");   
 }
 
 

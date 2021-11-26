@@ -7,6 +7,8 @@ let irDerecha = true;
 let displayResultado = document.querySelector(".resultados");
 let resultat = 0;
 
+let paused = false;
+
 let alienId;
 let aliensBorrats = [];
 let laserId;
@@ -19,6 +21,27 @@ const aliens = [
     15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
     30, 31, 32, 33, 34, 35, 36, 37, 38, 39
 ];
+
+//Part del codi per pausar i reanudar el joc:
+
+document.addEventListener("keyup", function(e){ //Es el event listener que activa la funcio de pausar o la de reanudar el joc.
+    if(e.wich === 27){ // El 27 es la tecla "ESC"
+        if(paused){
+            reanudarJuego();
+        }else{
+            pausarJuego();
+        }
+    }
+});
+
+function reanudarJuego(){
+
+}
+
+function pausarJuego(){
+    clearInterval(alienId);
+    paused = true;
+}
 
 //Generamos el grid de cuadrados
 for (let i = 0; i < 225; i++) {
@@ -47,10 +70,10 @@ function generarPosicionEspeciales() {
     }
 }
 //dibujar los aliens especiales
-function dibujarEspeciales(){
-    for(let i=0; i<posicionEspeciales.length; i++){ //PROBLEMA CON ESTE BUCLE QUE ME DIBUJA LOS 3 Y TIENE QUE DIBUJAR 1
+function dibujarEspeciales(i){
+    //for(i; i<posicionEspeciales.length; i++){ //PROBLEMA CON ESTE BUCLE QUE ME DIBUJA LOS 3 Y TIENE QUE DIBUJAR 1
             quadrados[aliens[posicionEspeciales[i]]].classList.add("alienEspecial");
-    }
+    //}
 }
 
 //dibujar todos los aliens (llamamos a dibujar los especiales tambien).
@@ -62,7 +85,7 @@ function dibujarAliens() {
     }
     for(let i=0; i<posicionEspeciales.length; i++){
         if(!aliensBorrats.includes(posicionEspeciales[i])){
-            dibujarEspeciales();
+            dibujarEspeciales(i); //li passo el valor de "i" perque aixi sap quina es la posició que ha de borrar.
         }
     }
     

@@ -22,27 +22,6 @@ const aliens = [
     30, 31, 32, 33, 34, 35, 36, 37, 38, 39
 ];
 
-//Part del codi per pausar i reanudar el joc:
-
-document.addEventListener("keyup", function(e){ //Es el event listener que activa la funcio de pausar o la de reanudar el joc.
-    if(e.wich === 27){ // El 27 es la tecla "ESC"
-        if(paused){
-            reanudarJuego();
-        }else{
-            pausarJuego();
-        }
-    }
-});
-
-function reanudarJuego(){
-
-}
-
-function pausarJuego(){
-    clearInterval(alienId);
-    paused = true;
-}
-
 //Generamos el grid de cuadrados
 for (let i = 0; i < 225; i++) {
     const quadrados = document.createElement("div");
@@ -196,4 +175,25 @@ function disparar(e) {
         case " ":
             if (!laserId) laserId = setInterval(moverLaser, 50);
     }
+}
+
+//Part del codi per pausar i reanudar el joc:
+
+document.addEventListener("keyup", function(e){ //Es el event listener que activa la funcio de pausar o la de reanudar el joc.
+    if(e.key === 27){ // El 27 es la tecla "ESC"
+        if(paused){
+            reanudarJuego();
+        }else{
+            pausarJuego();
+        }
+    }
+});
+
+function reanudarJuego(){
+
+}
+
+function pausarJuego(){
+    clearInterval(alienId);
+    paused = true;
 }

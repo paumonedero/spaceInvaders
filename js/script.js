@@ -35,6 +35,17 @@ quadrados[posicionNave].classList.add("nave");
 //Los event listener que hacen que al pulsar las teclas podamos mover la nave o disparar
 document.addEventListener('keydown', moverNave);
 document.addEventListener("keydown", disparar);
+document.addEventListener("keydown", function(e){//Es el event listener que activa la funcio de pausar o la de reanudar el joc.
+    if(e.key == 'Escape'){
+        if(paused){
+            reanudarJuego();
+        }else{
+            pausarJuego();
+        }
+    }
+});
+
+
 
 //dibujamos todos los aliens (tanto especiales como normales) por primera vez (antes de dibujar los especiales generamos su posicion).
 dibujarAliens();
@@ -47,12 +58,6 @@ function generarPosicionEspeciales() {
         let random1 = Math.floor(Math.random() * aliens.length);
         posicionEspeciales.push(random1);
     }
-}
-//dibujar los aliens especiales
-function dibujarEspeciales(i){
-    //for(i; i<posicionEspeciales.length; i++){ //PROBLEMA CON ESTE BUCLE QUE ME DIBUJA LOS 3 Y TIENE QUE DIBUJAR 1
-            quadrados[aliens[posicionEspeciales[i]]].classList.add("alienEspecial");
-    //}
 }
 
 //dibujar todos los aliens (llamamos a dibujar los especiales tambien).
@@ -69,6 +74,16 @@ function dibujarAliens() {
     }
     
 }
+
+//dibujar los aliens especiales
+function dibujarEspeciales(i){
+    if (i != undefined){
+        quadrados[aliens[posicionEspeciales[i]]].classList.add("alienEspecial");
+    }
+   
+}
+
+
 function borrarAliens() {
     for (let i = 0; i < aliens.length; i++) {
         quadrados[aliens[i]].classList.remove("alien", "alienEspecial");
@@ -177,20 +192,9 @@ function disparar(e) {
     }
 }
 
-//Part del codi per pausar i reanudar el joc:
-
-document.addEventListener("keyup", function(e){ //Es el event listener que activa la funcio de pausar o la de reanudar el joc.
-    if(e.key === 27){ // El 27 es la tecla "ESC"
-        if(paused){
-            reanudarJuego();
-        }else{
-            pausarJuego();
-        }
-    }
-});
-
 function reanudarJuego(){
-
+    alienId = setInterval(moverAliens, 1000);
+    paused = false;
 }
 
 function pausarJuego(){

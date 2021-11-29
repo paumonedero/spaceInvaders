@@ -212,11 +212,11 @@
             customClass:{
                 title: 'title-custom',
             },
-            title: 'Juego Pausado',
+            title: 'Joc Pausat',
             width: 600,
             padding: '3em',
             background: '#fff url(./img/pauseBackground.jpg) 200px',
-            confirmButtonText: 'Reanudar',
+            confirmButtonText: 'Reprendre',
             backdrop: `
               rgba(0,0,123,0.4)
               url("./img/pauseIcon.png")

@@ -6,6 +6,7 @@
     let irDerecha = true;
     let displayResultado = document.querySelector(".resultados");
     let resultat = 0;
+    var numDada = 1;
     
     let paused = false;
     
@@ -175,6 +176,21 @@
                 quadrados[posicionLaser].classList.remove("alien");
                 if(quadrados[posicionLaser].classList.contains("alienEspecial")){
                     quadrados[posicionLaser].classList.remove("alienEspecial");
+                    Swal.fire({
+                        customClass:{
+                            title: 'title-custom',
+                        },
+                        title: 'Dada '+numDada,
+                        width: 600,
+                        padding: '3em',
+                        background: '#fff url(./img/pauseBackground.jpg) 200px',
+                        confirmButtonText: 'Reprendre',
+                        backdrop: `
+                          rgba(0,0,123,0.4)
+                          url("./img/pauseIcon.png")
+                          left top
+                          no-repeat`
+                      })
                 }
                 quadrados[posicionLaser].classList.add("boom");
     

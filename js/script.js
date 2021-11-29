@@ -1,5 +1,4 @@
 //Declaración de variables.
-document.addEventListener("DOMContentLoaded", function () {
     const grid = document.querySelector(".grid");
     let posicionNave = 202;
     let width = 15;
@@ -14,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let aliensBorrats = [];
     let laserId;
     let posicionEspeciales = [];
+    
     
     alienId = setInterval(moverAliens, 1000);
     
@@ -47,15 +47,19 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     
     //dibujamos todos los aliens (tanto especiales como normales) por primera vez (antes de dibujar los especiales generamos su posicion).
-    dibujarAliens();
     generarPosicionEspeciales();
+    dibujarAliens();
     //dibujarEspeciales();
     
     //generarPosicionEspeciales --> para guardar la posicion del array en la que estarán los aliens especiales.
     function generarPosicionEspeciales() {
-        for (let i = 0; i < 3; i++) { //de momento genera 3, despues generarà dependiendo del grado seleccionado.
+        let i=0;
+        while(i<3) { //de momento genera 3, despues generarà dependiendo del grado seleccionado.
             let random1 = Math.floor(Math.random() * aliens.length);
-            posicionEspeciales.push(random1);
+            if(!posicionEspeciales.includes(random1)){
+                posicionEspeciales.push(random1);
+                i++;
+            }
         }
     }
     
@@ -200,5 +204,27 @@ document.addEventListener("DOMContentLoaded", function () {
     function pausarJuego(){
         clearInterval(alienId);
         paused = true;
+        menuPause();
     }
-});
+
+    function menuPause(){
+        Swal.fire({
+            customClass:{
+                title: 'title-custom',
+            },
+            title: 'Juego Pausado',
+            width: 600,
+            padding: '3em',
+            background: '#fff url(./img/pauseBackground.jpg) 200px',
+            confirmButtonText: 'Reanudar',
+            backdrop: `
+              rgba(0,0,123,0.4)
+              url("./img/pauseIcon.png")
+              left top
+              no-repeat`
+          }).then((result) => {
+            if (result.isConfirmed) {
+                reanudarJuego();
+            }
+          })
+    }

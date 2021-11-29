@@ -6,10 +6,10 @@ html{
     background-color: black;
 }
 body{
-    transform: scale(0.8);
     overflow: hidden;
 }
 .juego{
+    transform: scale(0.8);
     position: absolute;
     left: 50%;
     top: 50%;
@@ -59,4 +59,8 @@ body{
 }
 h1{
     color: white;
+}
+
+.title-custom {
+    color: white !important;
 }

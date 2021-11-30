@@ -175,22 +175,20 @@
                 quadrados[posicionLaser].classList.remove("laser");
                 quadrados[posicionLaser].classList.remove("alien");
                 if(quadrados[posicionLaser].classList.contains("alienEspecial")){
+                    clearInterval(alienId);
+                    paused = true;
                     quadrados[posicionLaser].classList.remove("alienEspecial");
-                    Swal.fire({
-                        customClass:{
-                            title: 'title-custom',
-                        },
-                        title: 'Dada '+numDada,
-                        width: 600,
-                        padding: '3em',
-                        background: '#fff url(./img/pauseBackground.jpg) 200px',
-                        confirmButtonText: 'Reprendre',
-                        backdrop: `
-                          rgba(0,0,123,0.4)
-                          url("./img/pauseIcon.png")
-                          left top
-                          no-repeat`
+                    Swal.fire(
+                        'Sortida laboral ' +numDada,
+                        'Text de la sortida laboral',
+                        'info'
+                      ).then((result) => {
+                        if (result.isConfirmed) {
+                            reanudarJuego();
+                        }
                       })
+                    
+                      numDada++;
                 }
                 quadrados[posicionLaser].classList.add("boom");
     

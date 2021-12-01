@@ -13,9 +13,29 @@ body{
     position: absolute;
     left: 50%;
     margin-left: -400px;
+    margin-top: -50px;
+    flex-direction: column;
+}
+
+.menu{
+    transform: scale(0.8);
+    position: absolute;
+    left: 50%;
+    margin-left: -400px;
+    margin-top: -15px;
+    flex-direction: column;
 }
 
 .grid{
+    width: 690px;
+    height: 690px;
+    border: 30px solid transparent;
+    border-image: url(../img/border.png) 20% round;
+    display: flex;
+    flex-wrap: wrap;
+    background-image: url(../img/fonsJoc.png);
+}
+.gridMenu{
     width: 690px;
     height: 690px;
     border: 30px solid transparent;
@@ -62,3 +82,58 @@ h1{
 .title-custom {
     color: white !important;
 }
+
+.laserAlien{
+    background-image: url(../img/alienLaser.png);
+    background-size: cover;
+}
+
+.menuButtons{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.botoJugar {
+    padding: 0.9em 2em;
+    border: 2px solid #17C3B2;
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 23px;
+    color: #ddd;
+    transition: .3s;
+    z-index: 1;
+    font-family: inherit;
+    color: #17C3B2;
+    margin-bottom: 5px;
+    height: 70px;
+    width: 250px;
+   }
+   
+   .botoJugar::before {
+    content: '';
+    width: 0;
+    height: 300%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: #17C3B2;
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+    height: 500px;
+   }
+   
+   .botoJugar:hover::before {
+    width: 105%;
+   }
+   
+   .botoJugar:hover {
+    color: #111;
+   }
+   

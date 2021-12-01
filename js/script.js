@@ -1,3 +1,14 @@
+let botonJugar = document.getElementById("jugar");
+
+
+
+
+
+
+botonJugar.addEventListener("click", function(){
+
+    document.getElementById("menu").style.display = "none";
+    document.getElementById("juego").style.display = "flex";
 //Declaración de variables.
     const grid = document.querySelector(".grid");
     let posicionNave = 202;
@@ -14,9 +25,6 @@
     let aliensBorrats = [];
     let laserId;
     let posicionEspeciales = [];
-    
-    
-    alienId = setInterval(moverAliens, 1000);
     
     const aliens = [
         0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
@@ -48,8 +56,11 @@
     });
     
     //dibujamos todos los aliens (tanto especiales como normales) por primera vez (antes de dibujar los especiales generamos su posicion).
+    alienId = setInterval(moverAliens, 700);
     generarPosicionEspeciales();
     dibujarAliens();
+    let disparoAlien = setInterval(dispararAliens, 1500);
+    let disparoAlien2 = setInterval(dispararAliens, 2000);
     //dibujarEspeciales();
     
     //generarPosicionEspeciales --> para guardar la posicion del array en la que estarán los aliens especiales.
@@ -153,9 +164,46 @@
         if (aliensBorrats.length === aliens.length) {
             displayResultado.innerHTML = "HAS GUANYAT!";
             clearInterval(alienId);
+            clearInterval(disparoAlien);
+            clearInterval(disparoAlien2);
         }
     }
-    
+
+    function dispararAliens(){
+        if(paused == false){
+            let random2 = Math.floor(Math.random() * aliens.length); //FALTA ARREGLAR PERQUE NO SURTI EL LASER D'ON JA NO HI HA UN ALIEN PERQUE HA SIGUT DESTRUIT
+            let posicionLaserAlien = aliens[random2];
+
+            function moverLaserAlien(){
+                quadrados[posicionLaserAlien].classList.remove("laserAlien");
+                posicionLaserAlien = posicionLaserAlien + width;
+                quadrados[posicionLaserAlien].classList.add("laserAlien");
+
+                if(quadrados[posicionLaserAlien + width] == undefined){
+                    quadrados[posicionLaserAlien].classList.remove("laserAlien");
+                }
+                if(quadrados[posicionLaserAlien].classList.contains("nave")){
+                    clearInterval(alienId);
+                    paused = true;
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: "T'han donat a la nau! -15 punts!",
+                        showConfirmButton: false,
+                        timer: 1000
+                      }).then((result) => {
+                        if (result.dismiss === Swal.DismissReason.timer) {
+                          reanudarJuego();
+                        }
+                      })
+                      resultat = resultat - 15;
+                      displayResultado.innerHTML = resultat;
+                }
+            }
+            setInterval(moverLaserAlien, 100);
+        }
+    }
+
     function disparar(e) {
         if(paused == false){
             let posicionLaser = posicionNave;
@@ -178,17 +226,20 @@
                     clearInterval(alienId);
                     paused = true;
                     quadrados[posicionLaser].classList.remove("alienEspecial");
-                    Swal.fire(
-                        'Sortida laboral ' +numDada,
-                        'Text de la sortida laboral',
-                        'info'
-                      ).then((result) => {
+                    Swal.fire({
+                        icon: 'info',
+                        title: 'Sortida laboral '+numDada,
+                        text: 'Text de la base de dades de la sortida laboral',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false
+                      }).then((result) => {
                         if (result.isConfirmed) {
                             reanudarJuego();
                         }
                       })
                     
                       numDada++;
+                      resultat = resultat + 5; 
                 }
                 quadrados[posicionLaser].classList.add("boom");
     
@@ -198,7 +249,7 @@
     
                 const alienBorrat = aliens.indexOf(posicionLaser);
                 aliensBorrats.push(alienBorrat);
-                resultat++;
+                resultat= resultat + 5;
                 displayResultado.innerHTML = resultat;
             }
         }
@@ -231,6 +282,8 @@
             padding: '3em',
             background: '#fff url(./img/pauseBackground.jpg) 200px',
             confirmButtonText: 'Reprendre',
+            allowEscapeKey: false,
+            allowOutsideClick: false,
             backdrop: `
               rgba(0,0,123,0.4)
               url("./img/pauseIcon.png")
@@ -242,3 +295,4 @@
             }
           })
     }
+});

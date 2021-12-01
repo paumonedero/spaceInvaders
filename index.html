@@ -9,11 +9,20 @@
     <title>Space Invaders</title>
 </head>
 <body>
-    <div class="juego">
-        <h1 class="resultados">0</h1>
+    <div class="juego" id="juego" style="display: none">
+        <h1 class="resultados"  >0</h1>
         <div class="grid">
         </div>
     </div> 
+    <div class="menu" id="menu" style="display: flex">
+        <div class="gridMenu">
+            <div class="menuButtons">
+                <button id="jugar" class="botoJugar">Jugar</button>
+                <button id="controls" class="botoJugar">Controls</button>
+                <button id="ranking" class="botoJugar">Ranking</button>
+            </div>
+        </div>
+    </div>
     <script src="js/sweetalert2@11.js"></script>
     <script src="js/script.js"></script>
 </body>

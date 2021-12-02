@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon" href="img/icono.png" type="image/x-icon">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" href="img/icono.png" type="image/x-icon" />
     <title>Space Invaders</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="juego" id="juego" style="display: none">
-        <h1 class="resultados"  >0</h1>
-        <div class="grid">
-        </div>
-    </div> 
+      <h2 id="resultados" class="resultados">0</h2>
+      <div class="grid"></div>
+    </div>
     <div class="menu" id="menu" style="display: flex">
-        <div class="gridMenu">
-            <div class="menuButtons">
-                <button id="jugar" class="botoJugar">Jugar</button>
-                <button id="controls" class="botoJugar">Controls</button>
-                <button id="ranking" class="botoJugar">Ranking</button>
-            </div>
+      <div class="gridMenu">
+        <div class="titolMenu">
+          <h1>
+            <span data-z data-z-event="pointer">Space</span><br />
+            <span data-z data-z-event="pointer">Invaders</span>
+          </h1>
         </div>
+        <div class="menuButtons">
+          <button id="jugar" class="botoJugar">Jugar</button>
+          <button id="controls" class="botoJugar">Controls</button>
+          <button id="ranking" class="botoJugar">Ranking</button>
+        </div>
+      </div>
     </div>
     <script src="js/sweetalert2@11.js"></script>
+    <script src="js/ztext.min.js"></script>
     <script src="js/script.js"></script>
-</body>
+  </body>
 </html>

@@ -1,139 +1,164 @@
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
-html{
-    background-color: black;
+html {
+  background-color: black;
 }
-body{
-    overflow: hidden;
+body {
+  overflow: hidden;
 }
-.juego{
-    transform: scale(0.8);
-    position: absolute;
-    left: 50%;
-    margin-left: -400px;
-    margin-top: -50px;
-    flex-direction: column;
-}
-
-.menu{
-    transform: scale(0.8);
-    position: absolute;
-    left: 50%;
-    margin-left: -400px;
-    margin-top: -15px;
-    flex-direction: column;
+.juego {
+  transform: scale(0.8);
+  position: absolute;
+  left: 50%;
+  margin-left: -400px;
+  margin-top: -50px;
+  flex-direction: column;
 }
 
-.grid{
-    width: 690px;
-    height: 690px;
-    border: 30px solid transparent;
-    border-image: url(../img/border.png) 20% round;
-    display: flex;
-    flex-wrap: wrap;
-    background-image: url(../img/fonsJoc.png);
-}
-.gridMenu{
-    width: 690px;
-    height: 690px;
-    border: 30px solid transparent;
-    border-image: url(../img/border.png) 20% round;
-    display: flex;
-    flex-wrap: wrap;
-    background-image: url(../img/fonsJoc.png);
+.menu {
+  transform: scale(0.8);
+  position: absolute;
+  left: 50%;
+  margin-left: -400px;
+  margin-top: -15px;
+  flex-direction: column;
 }
 
-.grid div{
-    box-sizing: border-box;
-    width: 46px;
-    height: 46px;
+.grid {
+  width: 690px;
+  height: 690px;
+  border: 30px solid transparent;
+  border-image: url(../img/border.png) 20% round;
+  display: flex;
+  flex-wrap: wrap;
+  background-image: url(../img/fonsJoc.png);
+}
+.gridMenu {
+  width: 690px;
+  height: 690px;
+  border: 30px solid transparent;
+  border-image: url(../img/border.png) 20% round;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  background-image: url(../img/fonsJoc.png);
 }
 
-.alien{
-    background-image: url(../img/alienNormal.png);
-    background-size: cover;
+.grid div {
+  box-sizing: border-box;
+  width: 46px;
+  height: 46px;
 }
 
-.alienEspecial{
-    background-image: url(../img/alienEspecial.png)!important;
-    background-size: cover;
+.alien {
+  background-image: url(../img/alienNormal.png);
+  background-size: cover;
 }
 
-.nave{
-    background-image: url(../img/nave.png);
-    background-size: cover;
+.alienEspecial {
+  background-image: url(../img/alienEspecial.png) !important;
+  background-size: cover;
 }
 
-.laser{
-    background-image: url(../img/laser.png);
-    background-size: cover;
+.nave {
+  background-image: url(../img/nave.png);
+  background-size: cover;
 }
 
-.boom{
-    background-image: url(../img/explosion.gif);
-    background-size: cover;
+.laser {
+  background-image: url(../img/laser.png);
+  background-size: cover;
 }
-h1{
-    color: white;
+
+.boom {
+  background-image: url(../img/explosion.gif);
+  background-size: cover;
 }
 
 .title-custom {
-    color: white !important;
+  color: white !important;
 }
 
-.laserAlien{
-    background-image: url(../img/alienLaser.png);
-    background-size: cover;
+.laserAlien {
+  background-image: url(../img/alienLaser.png);
+  background-size: cover;
 }
 
-.menuButtons{
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.menuButtons {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titolMenu {
+  text-align: center;
 }
 
 .botoJugar {
-    padding: 0.9em 2em;
-    border: 2px solid #17C3B2;
-    position: relative;
-    overflow: hidden;
-    background-color: transparent;
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 23px;
-    color: #ddd;
-    transition: .3s;
-    z-index: 1;
-    font-family: inherit;
-    color: #17C3B2;
-    margin-bottom: 5px;
-    height: 70px;
-    width: 250px;
-   }
-   
-   .botoJugar::before {
-    content: '';
-    width: 0;
-    height: 300%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(45deg);
-    background: #17C3B2;
-    transition: .5s ease;
-    display: block;
-    z-index: -1;
-    height: 500px;
-   }
-   
-   .botoJugar:hover::before {
-    width: 105%;
-   }
-   
-   .botoJugar:hover {
-    color: #111;
-   }
-   
+  padding: 0.9em 2em;
+  border: 2px solid #17c3b2;
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 23px;
+  color: #ddd;
+  transition: 0.3s;
+  z-index: 1;
+  font-family: inherit;
+  color: #17c3b2;
+  margin-bottom: 5px;
+  height: 70px;
+  width: 250px;
+}
+
+#resultados {
+  color: white;
+}
+
+.botoJugar::before {
+  content: "";
+  width: 0;
+  height: 300%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: #17c3b2;
+  transition: 0.5s ease;
+  display: block;
+  z-index: -1;
+  height: 500px;
+}
+
+.botoJugar:hover::before {
+  width: 105%;
+}
+
+.botoJugar:hover {
+  color: #111;
+}
+
+h2 {
+  font-size: 50px;
+}
+
+/*Configuracion titulo menu HOME de Space Invaders*/
+h1 {
+  font-size: 100px;
+  color: white;
+  margin: 30px;
+}
+
+.z-text {
+  transform: rotateX(-15deg);
+  transition: transform 1s;
+}
+
+.z-layer:not(:first-child) {
+  color: blue;
+}

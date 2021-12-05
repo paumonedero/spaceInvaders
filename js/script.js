@@ -1,12 +1,25 @@
 //Declaracion de botones del menu HOME
 let botonJugar = document.getElementById("jugar");
 let botonRanking = document.getElementById("ranking");
+let botonInici = document.getElementById("inici");
+let botonControles = document.getElementById("controls");
 
+//Evento para mostrar los controles
+botonControles.addEventListener("click", function(){
+  document.getElementById("menu").style.display = "none";
+  document.getElementById("controles").style.display = "flex";
+});
 
 //Evento para mostrar el ranking
 botonRanking.addEventListener("click", function(){
     document.getElementById("menu").style.display = "none";
     document.getElementById("rankingMenu").style.display = "flex";
+});
+
+//Evento para volver al menú de inicio
+botonInici.addEventListener("click", function(){
+    document.getElementById("rankingMenu").style.display = "none";
+    document.getElementById("menu").style.display = "flex";
 });
 
 

@@ -200,29 +200,35 @@ botonJugar.addEventListener("click", function () {
       let posicionLaserAlien = aliens[random2];
 
       function moverLaserAlien() {
-        quadrados[posicionLaserAlien].classList.remove("laserAlien");
-        posicionLaserAlien = posicionLaserAlien + width;
-        quadrados[posicionLaserAlien].classList.add("laserAlien");
-
-        if (quadrados[posicionLaserAlien + width] == undefined) {
+        if (quadrados[posicionLaserAlien]) {
           quadrados[posicionLaserAlien].classList.remove("laserAlien");
-        }
-        if (quadrados[posicionLaserAlien].classList.contains("nave")) {
-          clearInterval(alienId);
-          paused = true;
-          Swal.fire({
-            position: "top-end",
-            icon: "error",
-            title: "T'han donat a la nau! -15 punts!",
-            showConfirmButton: false,
-            timer: 1000,
-          }).then((result) => {
-            if (result.dismiss === Swal.DismissReason.timer) {
-              reanudarJuego();
-            }
-          });
-          resultat = resultat - 15;
-          displayResultado.innerHTML = resultat;
+
+          posicionLaserAlien = posicionLaserAlien + width;
+
+          if (quadrados[posicionLaserAlien])
+            quadrados[posicionLaserAlien].classList.add("laserAlien");
+
+          if (!quadrados[posicionLaserAlien + width]) {
+            if (quadrados[posicionLaserAlien]) quadrados[posicionLaserAlien].classList.remove("laserAlien");
+          }
+
+          if (quadrados[posicionLaserAlien] && quadrados[posicionLaserAlien].classList.contains("nave")) {
+            clearInterval(alienId);
+            paused = true;
+            Swal.fire({
+              position: "top-end",
+              icon: "error",
+              title: "T'han donat a la nau! -15 punts!",
+              showConfirmButton: false,
+              timer: 1000,
+            }).then((result) => {
+              if (result.dismiss === Swal.DismissReason.timer) {
+                reanudarJuego();
+              }
+            });
+            resultat = resultat - 15;
+            displayResultado.innerHTML = resultat;
+          }
         }
       }
       setInterval(moverLaserAlien, 100);

@@ -271,7 +271,7 @@ botonJugar.addEventListener("click", function () {
           }
         }
       }
-      setInterval(moverLaserAlien, 100);
+      let idLaserAlien = setInterval(moverLaserAlien, 100);
     }
   }
 
@@ -344,6 +344,7 @@ botonJugar.addEventListener("click", function () {
 
   function pausarJuego() {
     clearInterval(alienId);
+    clearInterval(idLaserAlien);
     paused = true;
     menuPause();
   }

@@ -196,8 +196,18 @@ botonJugar.addEventListener("click", function () {
 
   function dispararAliens() {
     if (paused == false) {
-      let random2 = Math.floor(Math.random() * aliens.length); //FALTA ARREGLAR PERQUE NO SURTI EL LASER D'ON JA NO HI HA UN ALIEN PERQUE HA SIGUT DESTRUIT
-      let posicionLaserAlien = aliens[random2];
+      let posicioExisteix = false;
+      let posicionLaserAlien;
+      let random2;
+      while(posicioExisteix == false){
+        random2 = Math.floor(Math.random() * aliens.length); //FALTA ARREGLAR PERQUE NO SURTI EL LASER D'ON JA NO HI HA UN ALIEN PERQUE HA SIGUT DESTRUIT
+        if(quadrados[aliens[random2]].classList.contains("alien")){
+          posicionLaserAlien = aliens[random2];
+          posicioExisteix = true;
+        }else{
+          posicioExisteix = false;
+        }
+      }
 
       function moverLaserAlien() {
         if (quadrados[posicionLaserAlien]) {

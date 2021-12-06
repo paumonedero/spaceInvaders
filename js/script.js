@@ -87,7 +87,7 @@ botonJugar.addEventListener("click", function () {
   let disparoAlien2 = setInterval(dispararAliens, 2000);
   //dibujarEspeciales();
 
-  //generarPosicionEspeciales --> para guardar la posicion del array en la que estarán los aliens especiales.
+  //generarPosicionEspeciales --> para guardar la posicion del array en la que estarán los aliens especiales (generado de manera aleatoria)
   function generarPosicionEspeciales() {
     let i = 0;
     while (i < 3) {
@@ -114,17 +114,19 @@ botonJugar.addEventListener("click", function () {
     }
   }
 
-  //dibujar los aliens especiales
+  //FUNCION PARA DIBUJAR DE LOS ALIENS ESPECIALES GENERADOS ANTERIORMENTE DE MANERA ALEATORIA
   function dibujarEspeciales(i) {
     quadrados[aliens[posicionEspeciales[i]]].classList.add("alienEspecial");
   }
 
+  //FUNCION PARA BORRAR TODOS LOS ALIENS
   function borrarAliens() {
     for (let i = 0; i < aliens.length; i++) {
       quadrados[aliens[i]].classList.remove("alien", "alienEspecial");
     }
   }
 
+//FUNCIÓN PARA MODIFICAR LA POSICIÓN DE LA NAVE (MOVERLA) EN CUANTO EL JUGADOR CLIQUE LAS TECLAS.
   function moverNave(e) {
     if (paused == false) {
       quadrados[posicionNave].classList.remove("nave");
@@ -146,6 +148,7 @@ botonJugar.addEventListener("click", function () {
     }
   }
 
+  //FUNCIÓN PARA MOVER LOS ALIENS (LLAMADA CON UN INTERVAL)
   function moverAliens() {
     const bordeIzquierdo = aliens[0] % width === 0;
     const bordeDerecho = aliens[aliens.length - 1] % width === width - 1;
@@ -173,6 +176,7 @@ botonJugar.addEventListener("click", function () {
 
     dibujarAliens();
 
+   //CONDICIÓN PARA TERMINAR EL JUEGO EN CASO DE HABER PERDIDO
     if (quadrados[posicionNave].classList.contains("alien", "nave")) {
       displayResultado.innerHTML = "GAME OVER";
       clearInterval(alienId);
@@ -184,6 +188,7 @@ botonJugar.addEventListener("click", function () {
         clearInterval(alienId);
       }
     }
+    //CONDICIÓN PARA TERMINAR EL JUEGO EN CASO DE HABER GANADO.
     if (aliensBorrats.length === aliens.length) {
       document.getElementById("juego").style.display = "none";
       document.getElementById("hasGuanyat").style.display = "flex";
@@ -194,13 +199,15 @@ botonJugar.addEventListener("click", function () {
     }
   }
 
+
+// FUNCION PARA DISPARAR 
   function dispararAliens() {
     if (paused == false) {
       let posicioExisteix = false;
       let posicionLaserAlien;
       let random2;
-      while(posicioExisteix == false){
-        random2 = Math.floor(Math.random() * aliens.length); //FALTA ARREGLAR PERQUE NO SURTI EL LASER D'ON JA NO HI HA UN ALIEN PERQUE HA SIGUT DESTRUIT
+      while(posicioExisteix == false){ //BUCLE HECHO PARA QUE BUSQUE UNA POSICIÓN DE UN ALIEN QUE NO ESTÉ DESTRUIDO PARA DISPARAR.
+        random2 = Math.floor(Math.random() * aliens.length);
         if(quadrados[aliens[random2]].classList.contains("alien")){
           posicionLaserAlien = aliens[random2];
           posicioExisteix = true;
@@ -208,7 +215,7 @@ botonJugar.addEventListener("click", function () {
           posicioExisteix = false;
         }
       }
-
+      //FUNCION QUE ESTA DENTRO DE LA DE dispararAlien PARA MOVER EL LASER UNA VEZ SE GENERA LA POSICIÓN DESDE DONDE SE DISPARA
       function moverLaserAlien() {
         if (quadrados[posicionLaserAlien]) {
           quadrados[posicionLaserAlien].classList.remove("laserAlien");
@@ -245,6 +252,8 @@ botonJugar.addEventListener("click", function () {
     }
   }
 
+
+//FUNCIÓN DE LA NAVE PARA DISPARAR CUANDO APRETEMOS EL "ESPACIO"
   function disparar(e) {
     if (paused == false) {
       let posicionLaser = posicionNave;

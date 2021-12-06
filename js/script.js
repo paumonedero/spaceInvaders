@@ -1,3 +1,10 @@
+//DECLARACION ARRAY RANKING
+let playerRanking = [
+  {"rank": "1-", "name": "Pau", "points": "120" },
+  {"rank": "2-", "name": "Cristine", "points": "70"},
+  {"rank": "3-", "name": "Xiao", "points": "63"}
+];
+
 //Declaracion de botones del menu HOME
 let botonJugar = document.getElementById("jugar");
 let botonRanking = document.getElementById("ranking");
@@ -15,12 +22,27 @@ botonControles.addEventListener("click", function () {
 botonRanking.addEventListener("click", function () {
   document.getElementById("menu").style.display = "none";
   document.getElementById("rankingMenu").style.display = "flex";
-});
+  let tabla = document.createElement("table");
+  tabla.style.width = "100%";
 
-//Evento para volver al menú de inicio desde el ranking menu
+  for (let y = 0; y < playerRanking.length; y++) {
+    let tablaRow = tabla.insertRow(y);
+    let infoObjecte = Object.getOwnPropertyNames(playerRanking[y]);
+    for (let h = 0; h < infoObjecte.length; h++) {
+      let columna = tablaRow.insertCell(h);
+      columna.innerHTML = Object.values(playerRanking[y])[h];
+      columna.style.color = "white";
+      columna.style.fontSize = "50px";
+    }
+  }
+  document.getElementById("rankingList").appendChild(tabla);
+
+  //Evento para volver al menú de inicio desde el ranking menu
 botonInici.addEventListener("click", function () {
   document.getElementById("rankingMenu").style.display = "none";
   document.getElementById("menu").style.display = "flex";
+  document.getElementById("rankingList").removeChild(tabla);
+});
 });
 
 //Evento para volver al menú de inicio desde el menu de controles
@@ -33,6 +55,7 @@ botonInici2.addEventListener("click", function () {
 botonJugar.addEventListener("click", function () {
   document.getElementById("menu").style.display = "none";
   document.getElementById("juego").style.display = "flex";
+
   //Declaración de variables.
   const grid = document.querySelector(".grid");
   let posicionNave = 202;

@@ -10,6 +10,8 @@ let botonJugar = document.getElementById("jugar");
 let botonRanking = document.getElementById("ranking");
 let botonInici = document.getElementById("inici");
 let botonInici2 = document.getElementById("inici2");
+let botonInici3 = document.getElementById("inici3");
+let botonInici4 = document.getElementById("inici4");
 let botonControles = document.getElementById("controls");
 
 //Evento para mostrar los controles
@@ -49,6 +51,20 @@ botonInici.addEventListener("click", function () {
 botonInici2.addEventListener("click", function () {
   document.getElementById("controles").style.display = "none";
   document.getElementById("menu").style.display = "flex";
+});
+
+//Evento para volver al menú de inicio desde la pantalla de "has guanyat!"
+botonInici3.addEventListener("click", function () {
+  document.getElementById("hasGuanyat").style.display = "none";
+  document.getElementById("menu").style.display = "flex";
+  window.location.reload();
+});
+
+//Evento para volver al menú de inicio desde la pantalla de "Game Over"
+botonInici4.addEventListener("click", function () {
+  document.getElementById("gameOver").style.display = "none";
+  document.getElementById("menu").style.display = "flex";
+  window.location.reload();
 });
 
 //Evento para mostrar el juego
@@ -215,10 +231,7 @@ botonJugar.addEventListener("click", function () {
     if (aliensBorrats.length === aliens.length) {
       document.getElementById("juego").style.display = "none";
       document.getElementById("hasGuanyat").style.display = "flex";
-      clearInterval(alienId);
-      clearInterval(disparoAlien);
-      clearInterval(disparoAlien2);
-      paused = true;
+      document.getElementById("puntuacioGuanyat").innerHTML = "PUNTUACIÓ: "+resultat;
     }
   }
 

@@ -89,9 +89,14 @@ botonJugar.addEventListener("click", function () {
   let laserId;
   let posicionEspeciales = [];
 
-  const aliens = [
+  
+  /*const aliens = [
     0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 30,
     31, 32, 33, 34, 35, 36, 37, 38, 39,
+  ];*/
+
+  const aliens = [
+    0,1,2
   ];
 
   //Generamos el grid de cuadrados
@@ -119,12 +124,11 @@ botonJugar.addEventListener("click", function () {
   });
 
   //dibujamos todos los aliens (tanto especiales como normales) por primera vez (antes de dibujar los especiales generamos su posicion).
-  alienId = setInterval(moverAliens, 700);
+  alienId = setInterval(moverAliens, 750);
   generarPosicionEspeciales();
   dibujarAliens();
   let disparoAlien = setInterval(dispararAliens, 1500);
   let disparoAlien2 = setInterval(dispararAliens, 2000);
-  //dibujarEspeciales();
 
   //generarPosicionEspeciales --> para guardar la posicion del array en la que estarán los aliens especiales (generado de manera aleatoria)
   function generarPosicionEspeciales() {
@@ -217,8 +221,12 @@ botonJugar.addEventListener("click", function () {
 
    //CONDICIÓN PARA TERMINAR EL JUEGO EN CASO DE HABER PERDIDO
     if (quadrados[posicionNave].classList.contains("alien", "nave")) {
-      displayResultado.innerHTML = "GAME OVER";
+      resultat = resultat - 15;
       clearInterval(alienId);
+      paused = true;
+      document.getElementById("juego").style.display = "none";
+      document.getElementById("gameOver").style.display = "flex";
+      document.getElementById("puntuacioPerdut").innerHTML = "PUNTUACIÓ: "+resultat;
     }
 
     for (let i = 0; i < aliens.length; i++) {
@@ -227,8 +235,11 @@ botonJugar.addEventListener("click", function () {
         clearInterval(alienId);
       }
     }
+
     //CONDICIÓN PARA TERMINAR EL JUEGO EN CASO DE HABER GANADO.
     if (aliensBorrats.length === aliens.length) {
+      paused = true;
+      clearInterval(alienId);
       document.getElementById("juego").style.display = "none";
       document.getElementById("hasGuanyat").style.display = "flex";
       document.getElementById("puntuacioGuanyat").innerHTML = "PUNTUACIÓ: "+resultat;
@@ -242,7 +253,7 @@ botonJugar.addEventListener("click", function () {
       let posicioExisteix = false;
       let posicionLaserAlien;
       let random2;
-      while(posicioExisteix == false){ //BUCLE HECHO PARA QUE BUSQUE UNA POSICIÓN DE UN ALIEN QUE NO ESTÉ DESTRUIDO PARA DISPARAR.
+      while(posicioExisteix == false && aliensBorrats.length !== aliens.length){ //BUCLE HECHO PARA QUE BUSQUE UNA POSICIÓN DE UN ALIEN QUE NO ESTÉ DESTRUIDO PARA DISPARAR.
         random2 = Math.floor(Math.random() * aliens.length);
         if(quadrados[aliens[random2]].classList.contains("alien")){
           posicionLaserAlien = aliens[random2];
@@ -351,13 +362,12 @@ botonJugar.addEventListener("click", function () {
   }
 
   function reanudarJuego() {
-    alienId = setInterval(moverAliens, 1000);
+    alienId = setInterval(moverAliens, 750);
     paused = false;
   }
 
   function pausarJuego() {
     clearInterval(alienId);
-    clearInterval(idLaserAlien);
     paused = true;
     menuPause();
   }

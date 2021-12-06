@@ -2,26 +2,32 @@
 let botonJugar = document.getElementById("jugar");
 let botonRanking = document.getElementById("ranking");
 let botonInici = document.getElementById("inici");
+let botonInici2 = document.getElementById("inici2");
 let botonControles = document.getElementById("controls");
 
 //Evento para mostrar los controles
-botonControles.addEventListener("click", function(){
+botonControles.addEventListener("click", function () {
   document.getElementById("menu").style.display = "none";
   document.getElementById("controles").style.display = "flex";
 });
 
 //Evento para mostrar el ranking
-botonRanking.addEventListener("click", function(){
-    document.getElementById("menu").style.display = "none";
-    document.getElementById("rankingMenu").style.display = "flex";
+botonRanking.addEventListener("click", function () {
+  document.getElementById("menu").style.display = "none";
+  document.getElementById("rankingMenu").style.display = "flex";
 });
 
-//Evento para volver al menú de inicio
-botonInici.addEventListener("click", function(){
-    document.getElementById("rankingMenu").style.display = "none";
-    document.getElementById("menu").style.display = "flex";
+//Evento para volver al menú de inicio desde el ranking menu
+botonInici.addEventListener("click", function () {
+  document.getElementById("rankingMenu").style.display = "none";
+  document.getElementById("menu").style.display = "flex";
 });
 
+//Evento para volver al menú de inicio desde el menu de controles
+botonInici2.addEventListener("click", function () {
+  document.getElementById("controles").style.display = "none";
+  document.getElementById("menu").style.display = "flex";
+});
 
 //Evento para mostrar el juego
 botonJugar.addEventListener("click", function () {
@@ -179,10 +185,12 @@ botonJugar.addEventListener("click", function () {
       }
     }
     if (aliensBorrats.length === aliens.length) {
-      displayResultado.innerHTML = "HAS GUANYAT!";
+      document.getElementById("juego").style.display = "none";
+      document.getElementById("hasGuanyat").style.display = "flex";
       clearInterval(alienId);
       clearInterval(disparoAlien);
       clearInterval(disparoAlien2);
+      paused = true;
     }
   }
 

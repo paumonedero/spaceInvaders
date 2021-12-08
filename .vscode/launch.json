@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Launch Chrome",
+            "request": "launch",
+            "type": "pwa-chrome",
+            "url": "http://localhost:8080/spaceInvaders/index.html",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
             "name": "Listen for Xdebug",
             "type": "php",
             "request": "launch",

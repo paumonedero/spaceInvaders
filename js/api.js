@@ -82,7 +82,6 @@
           botonInici.addEventListener("click", function () {
             document.getElementById("rankingMenu").style.display = "none";
             document.getElementById("menu").style.display = "flex";
-            document.getElementById("rankingList").removeChild(tabla);
           });
         })
         .catch((error) => console.error(error));

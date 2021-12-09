@@ -161,7 +161,7 @@ function insert()
                 }
             } else {
                 //If not exists score game.
-                $statement = $db->connect()->prepare("INSERT INTO user_game_cycle (id_user, id_game, id_cycle, points, hits) VALUES (:id_user, :id_game, :id_cycle, :points, :hits)");
+                $statement = $db->connect()->prepare("INSERT INTO user_game_cycle (id_user, id_game, id_cycle, points) VALUES (:id_user, :id_game, :id_cycle, :points)");
 
                 $statement->bindParam(":id_user", $id_user);
                 $statement->bindParam(":id_game", $id_game);

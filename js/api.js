@@ -8,7 +8,7 @@
       data.append("action", "insert");
       data.append("id_game", 2);
       data.append("id_user", 1);
-      data.append("id_cycle", 18);
+      data.append("id_cycle", 11);
       data.append("points", points);
 
       fetch("./backend/index.php", {
@@ -33,7 +33,7 @@
       data.append("top", 3);
       data.append("id_game", 2);
       data.append("id_user", 1);
-      data.append("id_cycle", 18);
+      data.append("id_cycle", 11);
 
       fetch("./backend/index.php", {
         method: "POST",
@@ -95,7 +95,7 @@
       //If the player win the game or lose the game.
         let data = new FormData();
         data.append("action", "get_jobs_oportunities");
-        data.append("id_cycle", 18);
+        data.append("id_cycle", 11);
   
         fetch("./backend/index.php", {
           method: "POST",

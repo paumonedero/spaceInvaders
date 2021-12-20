@@ -1,6 +1,8 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: bolder;
 }
 html {
   background-color: black;
@@ -173,7 +175,53 @@ img {
   font-size: 50px;
 }
 
+#resultados {
+  color: white;
+}
+
 .botoJugar {
+  padding: 0.9em 2em;
+  border: 2px solid #00eef7;
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 23px;
+  color: #ddd;
+  transition: 0.3s;
+  z-index: 1;
+  font-family: inherit;
+  color: rgb(40, 207, 191);
+  margin-bottom: 5px;
+  height: 70px;
+  width: 250px;
+}
+
+.botoJugar::before {
+  content: "";
+  width: 0;
+  height: 300%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: rgb(40, 207, 191);
+  transition: 0.5s ease;
+  display: block;
+  z-index: -1;
+  height: 500px;
+}
+
+.botoJugar:hover::before {
+  width: 105%;
+}
+
+.botoJugar:hover {
+  color: #111;
+}
+
+.botoJugar1 {
   padding: 0.9em 2em;
   border: 2px solid #17c3b2;
   position: relative;
@@ -192,11 +240,7 @@ img {
   width: 250px;
 }
 
-#resultados {
-  color: white;
-}
-
-.botoJugar::before {
+.botoJugar1::before {
   content: "";
   width: 0;
   height: 300%;
@@ -211,11 +255,95 @@ img {
   height: 500px;
 }
 
-.botoJugar:hover::before {
+.botoJugar1:hover::before {
   width: 105%;
 }
 
-.botoJugar:hover {
+.botoJugar1:hover {
+  color: #111;
+}
+
+.botoJugar2 {
+  padding: 0.9em 2em;
+  border: 2px solid #ff00dd;
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 23px;
+  color: #ddd;
+  transition: 0.3s;
+  z-index: 1;
+  font-family: inherit;
+  color: #ec09ce;
+  margin-bottom: 5px;
+  height: 70px;
+  width: 250px;
+}
+
+.botoJugar2::before {
+  content: "";
+  width: 0;
+  height: 300%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: #ec09ce;
+  transition: 0.5s ease;
+  display: block;
+  z-index: -1;
+  height: 500px;
+}
+
+.botoJugar2:hover::before {
+  width: 105%;
+}
+
+.botoJugar2:hover {
+  color: #111;
+}
+
+.botoJugar3 {
+  padding: 0.9em 2em;
+  border: 2px solid #fffb00;
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 23px;
+  color: #ddd;
+  transition: 0.3s;
+  z-index: 1;
+  font-family: inherit;
+  color: #d3d00c;
+  margin-bottom: 5px;
+  height: 70px;
+  width: 250px;
+}
+
+.botoJugar3::before {
+  content: "";
+  width: 0;
+  height: 300%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: #d3d00c;
+  transition: 0.5s ease;
+  display: block;
+  z-index: -1;
+  height: 500px;
+}
+
+.botoJugar3:hover::before {
+  width: 105%;
+}
+
+.botoJugar3:hover {
   color: #111;
 }
 

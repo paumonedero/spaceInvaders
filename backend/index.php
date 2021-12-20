@@ -23,6 +23,35 @@ if (isset($_POST["action"]) && !empty($_POST["action"])) {
     Response::send(array("msg" => "Param 'action' missing."), Response::HTTP_METHOD_NOT_ALLOWED);
 }
 
+function get_all_cycles()
+{
+    $cycles = [];
+
+    $id_cycle = isset($_POST["id_cycle"]) ? $_POST["id_cycle"] : -1;
+
+    try {
+        if ($id_cycle !== -1) {
+            $db = new Database();
+
+            $statement = $db->connect()->prepare("SELECT c.name as cicle, c.description
+                                                  FROM cycle c
+                                                  WHERE  c.id = :id_cycle");
+
+            $statement->bindParam(":id_cycle", $id_cycle);
+
+            $statement->execute();
+
+            $cycles = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+            Response::send(array("msg" => "Ok.", "data" => $cycles), Response::HTTP_OK);
+        } else {
+            Response::send(array("msg" => "Miss params."), Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+    } catch (PDOException $e) {
+        Response::send(array("msg" => "An unexpected error has occurred: " . $e->getMessage()), Response::HTTP_INTERNAL_SERVER_ERROR);
+    }
+}
+
 function get_jobs_oportunities() {
     $jobs = [];
 

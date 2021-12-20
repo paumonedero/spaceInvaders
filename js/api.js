@@ -108,3 +108,21 @@
           })
           .catch((error) => console.error(error));
     }
+
+
+function get_cycles(cycle) {
+  let data = new FormData();
+  data.append("action", "get_all_cycles");
+  data.append("id_cycle", cycle);
+
+  fetch("./backend/index.php", {
+    method: "POST",
+    cache: "no-cache",
+    body: data,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      cycles = data.data;
+    })
+    .catch((error) => console.error(error));
+}
